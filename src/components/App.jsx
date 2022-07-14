@@ -16,6 +16,7 @@ class App extends React.Component {
   onClick (video) {
     console.log("passed video value", video);
     // console.log(this.video);
+
     this.setState({videoPlayer: video});
   }
 
