@@ -28,7 +28,6 @@ class App extends React.Component {
 
   componentDidMount(q = 'cat') {
     this.search(q, (data) => {
-      console.log(data);
       var debounceFn = _.debounce(function() {
         this.setState({
           videoList: data,
@@ -40,10 +39,10 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: document.getElementById('input').value});
+    this.setState({value: document.getElementById('input')?.value});
     console.log(this.state.value);
     // this.search(this.state.value);
-    this.componentDidMount(document.getElementById('input').value);
+    this.componentDidMount(document.getElementById('input')?.value);
   }
 
   onClick (video) {
