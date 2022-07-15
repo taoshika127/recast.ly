@@ -1,15 +1,39 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from '../../src/components/VideoList.js';
 import VideoPlayer from '../../src/components/VideoPlayer.js';
+import searchYoutube from '../lib/searchYoutube.js';
 
 class App extends React.Component {
+
   constructor (props) {
     super(props);
-    this.videos = exampleVideoData;
-    this.video = exampleVideoData[0];
+    this.videos = [];
+    this.video = {
+      id: {
+        videoId: ''
+      },
+      snippet: {
+        title: '',
+        description: ''
+      }
+    };
     this.state = {videoList: this.videos, videoPlayer: this.video};
+    this.search = searchYoutube;
   }
+  search(query, callback) {
 
+
+  }
+  componentDidMount() {
+    this.search('cat', (data) => {
+      console.log(data);
+      this.setState({
+        videoList: data,
+        videoPlayer: data[0]
+      });
+    });
+
+  }
   onClick (video) {
     console.log('passed video value', video);
     // console.log(this.video);
