@@ -2,6 +2,7 @@ import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from '../../src/components/VideoList.js';
 import VideoPlayer from '../../src/components/VideoPlayer.js';
 import searchYoutube from '../lib/searchYoutube.js';
+import Search from './search.js';
 
 class App extends React.Component {
 
@@ -17,23 +18,34 @@ class App extends React.Component {
         description: ''
       }
     };
-    this.state = {videoList: this.videos, videoPlayer: this.video};
+    this.state = {
+      videoList: this.videos,
+      videoPlayer: this.video,
+      value: ''
+    };
     this.search = searchYoutube;
   }
-  search(query, callback) {
 
-
-  }
-  componentDidMount() {
-    this.search('cat', (data) => {
+  componentDidMount(q = 'cat') {
+    this.search(q, (data) => {
       console.log(data);
-      this.setState({
-        videoList: data,
-        videoPlayer: data[0]
-      });
+      var debounceFn = _.debounce(function() {
+        this.setState({
+          videoList: data,
+          videoPlayer: data[0]
+        });
+      }, 500, true).bind(this);
+      debounceFn();
     });
-
   }
+
+  handleChange(event) {
+    this.setState({value: document.getElementById('input').value});
+    console.log(this.state.value);
+    // this.search(this.state.value);
+    this.componentDidMount(document.getElementById('input').value);
+  }
+
   onClick (video) {
     console.log('passed video value', video);
     // console.log(this.video);
@@ -46,7 +58,9 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <div><h5><em>search</em> view goes here</h5>
+              <Search state={this.state} handleChange={this.handleChange.bind(this)}/>
+            </div>
           </div>
         </nav>
         <div className="row">
