@@ -1,5 +1,5 @@
 //import exampleVideoData from '/src/data/exampleVideoData.js';
-import VideoListEntry from './VideoListEntry.js';
+import VideoListEntry from '../../src/components/VideoListEntry.js';
 
 var VideoList = (props) => {
   // console.log(props.onClickEvent);

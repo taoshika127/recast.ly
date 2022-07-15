@@ -1,6 +1,6 @@
 import exampleVideoData from '../data/exampleVideoData.js';
-import VideoList from './VideoList.js';
-import VideoPlayer from './VideoPlayer.js';
+import VideoList from '../../src/components/VideoList.js';
+import VideoPlayer from '../../src/components/VideoPlayer.js';
 
 class App extends React.Component {
   constructor (props) {
@@ -8,13 +8,10 @@ class App extends React.Component {
     this.videos = exampleVideoData;
     this.video = exampleVideoData[0];
     this.state = {videoList: this.videos, videoPlayer: this.video};
-
-    //this.onClick = this.onClick.bind(this);
   }
 
-
   onClick (video) {
-    console.log("passed video value", video);
+    console.log('passed video value', video);
     // console.log(this.video);
 
     this.setState({videoPlayer: video});
@@ -22,7 +19,6 @@ class App extends React.Component {
 
   render () {
     return (
-
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
@@ -40,13 +36,12 @@ class App extends React.Component {
             <VideoList videos={this.state.videoList} state={this.state} onClickEvent={this.onClick.bind(this)}/>
           </div>
         </div>
-      </div>);
-
+      </div>
+    );
   }
 }
 
-
-ReactDOM.render(<App />, document.getElementById('app'));
+//ReactDOM.render(<App />, document.getElementById('app'));
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 export default App;
