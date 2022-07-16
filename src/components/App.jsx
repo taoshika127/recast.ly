@@ -3,7 +3,7 @@ import VideoList from '../../src/components/VideoList.js';
 import VideoPlayer from '../../src/components/VideoPlayer.js';
 import searchYoutube from '../lib/searchYoutube.js';
 import Search from './search.js';
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 
 class App extends React.Component {
 

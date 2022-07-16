@@ -8,7 +8,7 @@ var VideoListDetails = (props) => {
         {'Channel Name: '}{props.video.snippet.channelTitle}
       </div>
       <div className="time-stamp">
-        {'Created On: '}{moment(props.video.snippet.publishedAt).format('MMM Do YY')}
+        {'Created On: '}{props.video.snippet.publishedAt}
       </div>
     </div>
   );
