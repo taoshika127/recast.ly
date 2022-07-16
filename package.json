@@ -13,9 +13,11 @@
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1 ",
     "lodash": "^4.17.20",
+    "moment": "^2.29.4",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -28,3 +30,4 @@
     "sinon": "^9.2.1"
   }
 }
+

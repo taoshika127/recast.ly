@@ -3,6 +3,7 @@ import VideoList from '../../src/components/VideoList.js';
 import VideoPlayer from '../../src/components/VideoPlayer.js';
 import searchYoutube from '../lib/searchYoutube.js';
 import Search from './search.js';
+import { BrowserRouter } from "react-router-dom";
 
 class App extends React.Component {
 
@@ -15,13 +16,16 @@ class App extends React.Component {
       },
       snippet: {
         title: '',
-        description: ''
+        description: '',
+        publishedAt: '',
+        channelTitle: ''
       }
     };
     this.state = {
       videoList: this.videos,
       videoPlayer: this.video,
-      value: ''
+      value: '',
+      toggled: false,
     };
     this.search = searchYoutube;
   }
@@ -52,6 +56,11 @@ class App extends React.Component {
     this.setState({videoPlayer: video});
   }
 
+  onToggle () {
+    console.log('clicked')
+    this.setState({toggled: !this.state.toggled});
+  }
+
   render () {
     return (
       <div>
@@ -65,7 +74,7 @@ class App extends React.Component {
         <div className="row">
           <div className="col-md-7"></div>
           <div><h5><em>videoPlayer</em> view goes here</h5>
-            <VideoPlayer video={this.state.videoPlayer} state={this.state}/>
+            <VideoPlayer video={this.state.videoPlayer} state={this.state} onToggle={this.onToggle.bind(this)}/>
           </div>
         </div>
         <div className="col-md-5">
